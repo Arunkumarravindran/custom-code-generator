@@ -9,27 +9,36 @@
       
       <p class="projectTxt">PROJECT</p>
       <hr style="background-color: rgb(194, 189, 189);">
-      <mat-checkbox color = "primary" style=" font-size: 12px;"[checked]= "true">Maven Projcet</mat-checkbox>
-      <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">Gradle</mat-checkbox>
+      <ng-container  *ngFor="let project of projects; let i = index">
+        <mat-checkbox color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="checkedIndex === i" (change)="checkboxChange($event, i)">{{project.viewValue}}</mat-checkbox>
+    </ng-container>
+      <!-- <mat-checkbox color = "primary" style=" font-size: 12px;"[checked]= "true">Maven Projcet</mat-checkbox>
+      <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">Gradle</mat-checkbox> -->
 
     </mat-card>
     <mat-card class="lanuageCard">
       <p class="projectTxt">LANGUAGE</p>
       <hr style="background-color: rgb(194, 189, 189);">
-      <mat-checkbox color = "primary" style=" font-size: 12px;">Java</mat-checkbox>
+      <ng-container  *ngFor="let language of languages; let i = index">
+        <mat-checkbox color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="checkedIndex === i" (change)="checkboxChange($event, i)">{{language.viewValue}}</mat-checkbox>
+    </ng-container>
+      <!-- <mat-checkbox color = "primary" style=" font-size: 12px;">Java</mat-checkbox>
       <mat-checkbox color = "primary"style="margin-left: 50px; font-size: 12px;">Kotlin</mat-checkbox>
-      <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">Groovy</mat-checkbox>
+      <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">Groovy</mat-checkbox> -->
 
     </mat-card>
     <mat-card class="springCard">
       <p class="projectTxt">SPRING BOOT</p>
       <hr style="background-color: rgb(194, 189, 189);">
-      <mat-checkbox color = "primary" style=" font-size: 12px;"[checked]= "true">2.3.0 M4</mat-checkbox>
+      <ng-container  *ngFor="let springversion of springVersion; let i = index">
+        <mat-checkbox color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="checkedIndex === i" (change)="checkboxChange($event, i)">{{springversion.viewValue}}</mat-checkbox>
+    </ng-container>
+      <!-- <mat-checkbox color = "primary" style=" font-size: 12px;"[checked]= "true">2.3.0 M4</mat-checkbox>
       <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;" >2.3.0 (SNAPSHOT)</mat-checkbox>
       <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">2.2.7 (SNAPSHOT)</mat-checkbox>
       <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">2.2.6</mat-checkbox>
       <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">2.1.14 (SNAPSHOT)</mat-checkbox>
-      <mat-checkbox color = "primary"  style="margin-left: 50px; font-size: 12px;">2.1.13</mat-checkbox>
+      <mat-checkbox color = "primary"  style="margin-left: 50px; font-size: 12px;">2.1.13</mat-checkbox> -->
     </mat-card>
     <mat-card class="metaDataCard">
       <p class="projectTxt">PROJECT METADATA</p>
@@ -59,16 +68,22 @@
         </mat-form-field>
         <br>
         <span style="font-size: 12px;">Packaging</span>
-        <mat-checkbox color = "primary" style="margin-left: 30px; font-size: 12px;"[checked]= "true" color = "primary">JAR</mat-checkbox>
-        <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">WAR</mat-checkbox>
+        <ng-container  *ngFor="let pack of packaging; let i = index">
+          <mat-checkbox color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="checkedIndex === i" (change)="checkboxChange($event, i)">{{pack.viewValue}}</mat-checkbox>
+      </ng-container>
+        <!-- <mat-checkbox color = "primary" style="margin-left: 30px; font-size: 12px;"[checked]= "true" color = "primary">JAR</mat-checkbox>
+        <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">WAR</mat-checkbox> -->
         <span style="margin-left: 60px;font-size: 12px;">Java</span>
-        <mat-checkbox color = "primary"  style=" margin-left: 30px; font-size: 12px;"[checked]= "true">14</mat-checkbox>
+        <ng-container  *ngFor="let javaversion of javaVersion; let i = index">
+          <mat-checkbox color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="checkedIndex === i" (change)="checkboxChange($event, i)">{{javaversion.viewValue}}</mat-checkbox>
+      </ng-container>
+        <!-- <mat-checkbox color = "primary"  style=" margin-left: 30px; font-size: 12px;"[checked]= "true">14</mat-checkbox>
         <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">11</mat-checkbox>
-        <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">8</mat-checkbox>
+        <mat-checkbox color = "primary" style="margin-left: 50px; font-size: 12px;">8</mat-checkbox> -->
     </mat-card>
     <mat-card class="dependencyCard">
       <p class="projectTxt">DEPENDENCIES</p>
-      <button mat-button class="dependencyBtn">ADD DEPENDENCIES</button>
+      <button mat-raised-button class="dependencyBtn" >ADD DEPENDENCIES</button>
       <hr style="background-color: rgb(194, 189, 189); margin-top: 22px;">
     </mat-card>
   </form>
@@ -77,6 +92,6 @@
 
 
   <mat-toolbar class="footer">
-   <button mat-button class="generateBtn">GENERATE</button>
+   <button mat-button class="generateBtn" (click)="openDependency()">GENERATE</button>
    <button mat-button class="exploreBtn">EXPLORE</button>
     </mat-toolbar>
