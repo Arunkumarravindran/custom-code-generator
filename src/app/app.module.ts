@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { JavaScreenComponent } from 'src/java-screen/java-screen.component';
+import { JavaScreenComponent } from 'src/component/java-screen/java-screen.component';
+import{DependencyScreenComponent} from 'src/component/dependency-screen/dependency-screen.component'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -15,7 +16,8 @@ import {MatIconModule} from '@angular/material/icon';
 @NgModule({
    declarations: [
       AppComponent,
-      JavaScreenComponent
+      JavaScreenComponent,
+      DependencyScreenComponent
    ],
    imports: [
       BrowserModule,
