@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { ResponseDto } from 'src/_model/responseDto';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CodegenService {
+export class CodegenService { 
+
+  client_Url = "http://localhost:8080/metadata/client";
 
   constructor(private http : HttpClient) { }
 
@@ -32,4 +35,10 @@ export class CodegenService {
     console.log('Params -> '+params.toString())
     return params;
   }
+
+  getClient():Observable<ResponseDto>
+  {
+    return this.http.get<ResponseDto>(this.client_Url);
+  }
+
 }
