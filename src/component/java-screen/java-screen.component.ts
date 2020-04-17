@@ -13,7 +13,15 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
   styleUrls: ['./java-screen.component.css']
 })
 export class JavaScreenComponent implements OnInit {
-  checkedIndex = -1;
+  languageIndex = -1;
+  projectIndex = -1;
+  packIndex = -1;
+  javaIndex = -1;
+  springIndex = -1;
+  
+
+  
+ 
   languages: any[] = [
     {value: 'java', viewValue: 'Java'},
     {value: 'kotlin', viewValue: 'Kotlin'},
@@ -51,13 +59,13 @@ export class JavaScreenComponent implements OnInit {
 
   ngOnInit() {
     this.codeGenForm = new FormGroup({
-      project: new FormControl('maven-project', [
+      project: new FormControl('', [
         Validators.required
       ]),
-      language: new FormControl('java', [
+      language: new FormControl('', [
         Validators.required
       ]),
-      bootVersion: new FormControl('2.2.6.RELEASE', [
+      bootVersion: new FormControl('', [
         Validators.required
       ]),
       // group: new FormControl('com.example', [
@@ -75,10 +83,10 @@ export class JavaScreenComponent implements OnInit {
       packageName: new FormControl('com.example.demo', [
         Validators.required
       ]),
-      packaging: new FormControl('jar', [
+      packaging: new FormControl('', [
         Validators.required
       ]),
-      java: new FormControl('1.8', [
+      java: new FormControl('', [
         Validators.required,
       ]),
       dependencies: new FormControl('web', [
@@ -95,9 +103,26 @@ export class JavaScreenComponent implements OnInit {
     }), error => console.log('Error downloading the file' + error),
     () => console.info('File downloaded successfully');
   }
-  checkboxChange(event: MatCheckboxChange, index: number) {
-    this.checkedIndex = event.checked ? index : -1;
+  languageCheckboxChange(event: MatCheckboxChange, index: number) {
+    this.languageIndex = event.checked ? index : -1;
 }
+packagingCheckboxChange(event: MatCheckboxChange, index: number) {
+  this.packIndex = event.checked ? index : -1;
+}
+projectCheckboxChange(event: MatCheckboxChange, index: number) {
+  this.projectIndex = event.checked ? index : -1;
+}
+
+springVersionCheckboxChange(event: MatCheckboxChange, index: number) {
+  this.springIndex = event.checked ? index : -1;
+}
+
+javaVersionCheckboxChange(event: MatCheckboxChange, index: number) {
+  this.javaIndex = event.checked ? index : -1;
+}
+
+
+
   openDependency() {
     const dialogRef = this.dialog.open(DependencyScreenComponent, {
       width: '50%',

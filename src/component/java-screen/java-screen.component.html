@@ -10,7 +10,7 @@
       <p class="projectTxt">PROJECT</p>
       <hr style="background-color: rgb(194, 189, 189);">
       <ng-container  *ngFor="let project of projects; let i = index">
-        <mat-checkbox formControlName="project"  color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="checkedIndex === i" (change)="checkboxChange($event, i)">{{project.viewValue}}</mat-checkbox>
+        <mat-checkbox formControlName="project"  color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="projectIndex === i" (change)="projectCheckboxChange($event, i)">{{project.viewValue}}</mat-checkbox>
     </ng-container>
 
     </mat-card>
@@ -19,7 +19,7 @@
       <hr style="background-color: rgb(194, 189, 189);">
 
       <ng-container  *ngFor="let language of languages; let i = index">
-        <mat-checkbox formControlName="language" color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="checkedIndex === i" (change)="checkboxChange($event, i)">{{language.viewValue}}</mat-checkbox>
+        <mat-checkbox formControlName="language" color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="languageIndex === i" (change)="languageCheckboxChange($event, i)">{{language.viewValue}}</mat-checkbox>
     </ng-container>
      
     </mat-card>
@@ -27,7 +27,7 @@
       <p class="projectTxt">SPRING BOOT</p>
       <hr style="background-color: rgb(194, 189, 189);">
       <ng-container  *ngFor="let springversion of springVersion; let i = index">
-        <mat-checkbox  formControlName="bootVersion" color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="checkedIndex === i" (change)="checkboxChange($event, i)">{{springversion.viewValue}}</mat-checkbox>
+        <mat-checkbox  formControlName="bootVersion" color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="springIndex === i" (change)="springVersionCheckboxChange($event, i)">{{springversion.viewValue}}</mat-checkbox>
     </ng-container>
     
     </mat-card>
@@ -59,18 +59,18 @@
         </mat-form-field>
         <br>
         <span style="font-size: 12px;">Packaging</span>
-        <ng-container formControlName="packaging"  *ngFor="let pack of packaging; let i = index">
-          <mat-checkbox color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="checkedIndex === i" (change)="checkboxChange($event, i)">{{pack.viewValue}}</mat-checkbox>
+        <ng-container   *ngFor="let pack of packaging; let i = index">
+          <mat-checkbox formControlName="packaging" color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="packIndex === i" (change)="packagingCheckboxChange($event, i)">{{pack.viewValue}}</mat-checkbox>
       </ng-container>
                 <span style="margin-left: 60px;font-size: 12px;">Java</span>
-        <ng-container  *ngFor="let javaversion of javaVersion; let i = index">
-          <mat-checkbox formControlName="java" color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="checkedIndex === i" (change)="checkboxChange($event, i)">{{javaversion.viewValue}}</mat-checkbox>
+        <ng-container  *ngFor="let javaversion of javaVersion; let j = index">
+          <mat-checkbox formControlName="java" color = "primary"style="margin-left: 30px; font-size: 12px;" [checked]="javaIndex === j" (change)="javaVersionCheckboxChange($event, j)">{{javaversion.viewValue}}</mat-checkbox>
       </ng-container>
       
     </mat-card>
     <mat-card class="dependencyCard">
       <p class="projectTxt">DEPENDENCIES</p>
-      <button mat-raised-button class="dependencyBtn" >ADD DEPENDENCIES</button>
+      <button mat-raised-button class="dependencyBtn"  (click) = 'openDependency()'>ADD DEPENDENCIES</button>
       <hr style="background-color: rgb(194, 189, 189); margin-top: 22px;">
     </mat-card>
   </form>
